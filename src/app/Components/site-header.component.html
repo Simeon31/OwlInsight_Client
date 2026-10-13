@@ -1,0 +1,29 @@
+<header class="site-header">
+  <a class="brand" routerLink="/" aria-label="OwlInsight home">
+    <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+    <span class="brand-name">Owl<span>Insight</span></span>
+  </a>
+
+  <div class="header-actions">
+    <a class="login-link" href="#login">Log in</a>
+    <a class="register-link" href="#register">Register</a>
+    <a class="button button--small button--light" href="#contact">Get started <span aria-hidden="true">↗</span></a>
+    <button
+      class="menu-toggle"
+      type="button"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="mobile-navigation"
+      aria-label="Toggle navigation"
+      (click)="toggleMenu()"
+    >
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+@if (menuOpen()) {
+  <nav class="mobile-nav" id="mobile-navigation" aria-label="Mobile navigation">
+    <a href="#login" (click)="closeMenu()">Log in</a>
+    <a href="#register" (click)="closeMenu()">Register</a>
+  </nav>
+}
