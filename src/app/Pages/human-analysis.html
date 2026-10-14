@@ -1,0 +1,68 @@
+<main class="human-analysis-page">
+    <app-site-header />
+  <section class="recent-analysis-bar" aria-label="Recent analysis history">
+    <div class="recent-analysis-label">
+      <strong>Recent analysis</strong>
+      <span>Pick up where you left off</span>
+    </div>
+    <button class="recent-analysis-card" type="button" (click)="openHistory('Customer interview')"><strong>Customer interview</strong><span>Tone · sentiment · key phrases</span><time>09:42</time></button>
+    <button class="recent-analysis-card" type="button" (click)="openHistory('Policy draft')"><strong>Policy draft</strong><span>Clarity · readability · grammar</span><time>Yesterday</time></button>
+    <button class="recent-analysis-card" type="button" (click)="openHistory('Campaign notes')"><strong>Campaign notes</strong><span>Intent · entities · summary</span><time>Mon</time></button>
+    <button class="recent-analysis-view" type="button" (click)="viewRecentAnalyses()">View all <i aria-hidden="true">→</i></button>
+  </section>
+
+  <section class="human-analysis-content" aria-labelledby="human-language-analysis-title">
+    <div class="analysis-heading">
+      <h1 class="text-amber-200!">Understand any text, clearly</h1>
+      <p>Paste your writing, choose a focus, and get a structured language analysis.</p>
+
+      <button class="language-selector" type="button" aria-label="Choose language" (click)="chooseLanguage()">
+        {{ language() }}
+        <i class="language-selector__chevron" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <form class="analysis-form" (submit)="startAnalysis($event)">
+    <div class="analysis-workspace">
+      <article class="analysis-card text-card">
+        <div class="analysis-card__header">
+          <h3><span class="analysis-card__icon" aria-hidden="true"></span>Your text</h3>
+          <span class="character-count">{{ textLength() }} / 12,000</span>
+        </div>
+        <textarea class="text-input" maxlength="12000" aria-label="Text to analyze" placeholder="Paste or type the text you want to analyze..." [value]="text()" (input)="updateText($event)"></textarea>
+        <div class="text-card__footer">
+          <div class="text-actions">
+            <button class="small-button" type="button" (click)="pasteText()">Paste</button>
+            <button class="small-button" type="button" (click)="fileInput.click()">Upload .txt</button>
+            <input #fileInput class="visually-hidden" type="file" accept=".txt,text/plain" (change)="uploadText($event)" />
+          </div>
+          <span class="privacy-note">Your text stays private</span>
+        </div>
+      </article>
+
+      <article class="analysis-card results-card">
+        <div class="analysis-card__header">
+          <h3><span class="analysis-card__icon analysis-card__icon--sparkle" aria-hidden="true">✧</span>Analysis</h3>
+          <span class="analysis-status" aria-live="polite">{{ status() }}</span>
+        </div>
+        <div class="results-empty">
+          <div class="results-empty__icon" aria-hidden="true">⌕</div>
+          <h4>Your insights will appear here</h4>
+          <p>See tone, sentiment, readability, key phrases, and a<br class="desktop-break" /> concise summary in one clear view.</p>
+          <div class="analysis-features" aria-label="Analysis categories">
+            <span class="analysis-feature">Overview</span>
+            <span class="analysis-feature">Grammar</span>
+            <span class="analysis-feature">Tone</span>
+            <span class="analysis-feature">Lexicon</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="analysis-start-btn">
+      <p>Tip: press <kbd>⌘</kbd> + <kbd>Enter</kbd> to start</p>
+      <button class="start-analysis-button my-2" type="submit"><i aria-hidden="true">▷</i>Start analysis</button>
+    </div>
+    </form>
+  </section>
+</main>

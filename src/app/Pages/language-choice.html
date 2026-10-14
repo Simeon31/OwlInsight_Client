@@ -1,22 +1,49 @@
 <main class="hero-shell">
   <app-site-header />
-<h1 class="text-center">Language Choice</h1>
-  <br>
-  <span class="text-center px-5">
-    <p>
-      Choose your profile:
-    </p>
-  </span>
+  <section class="language-choice-content" aria-labelledby="language-choice-title">
+    <h1 id="language-choice-title" class="language-choice-title">Choose your profile</h1>
+    <p id="language-choice-prompt" class="language-choice-prompt">Select the type of language you want to analyze.</p>
 
-  <div class="language-choice-actions">
-    <button type="button">
-      <a class="text-link" href="/language-choice/grammar">Human Language</a>
-    </button>
-  OR
-    <button type="button">
-      <a class="text-link" href="/language-choice/grammar">Programming Language</a>
-    </button>
-  </div>
+    <div class="language-choice-actions" role="group" aria-labelledby="language-choice-prompt">
+      <a routerLink="/human-language-analysis">
+      <button
+        type="button"
+        class="language-choice-option"
+        [class.language-choice-option--selected]="selectedProfile() === 'human'"
+        [attr.aria-pressed]="selectedProfile() === 'human'"
+        (click)="selectProfile('human')"
+      >
+        <img
+          src="/Assets/Images/hand-drawn-glossary-illustration.png"
+          alt=""
+          aria-hidden="true"
+          class="language-choice-image language-choice-image--glossary"
+        >
+        <span class="language-choice-option-title">Human language</span>
+        <span class="language-choice-option-description">Grammar, meaning, and written communication</span>
+      </button>
+      </a>
+      <span class="language-choice-divider" aria-hidden="true">OR</span>
+     <a routerLink="/programming-language-analysis">
+      <button
+        type="button"
+        class="language-choice-option"
+        [class.language-choice-option--selected]="selectedProfile() === 'programming'"
+        [attr.aria-pressed]="selectedProfile() === 'programming'"
+        (click)="selectProfile('programming')"
+      >
+        <img
+          src="/Assets/Images/magnific__digital-illustration-isometric-laptop-displaying-l__10918.png"
+          alt=""
+          aria-hidden="true"
+          class="language-choice-image language-choice-image--laptop"
+        >
+        <span class="language-choice-option-title">Programming language</span>
+        <span class="language-choice-option-description">Code quality, structure, and complexity</span>
+      </button>
+     </a>
+    </div>
+  </section>
 
   <app-site-footer />
 </main>
