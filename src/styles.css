@@ -45,11 +45,6 @@ app-root {
 
 .site-header { align-items: center; display: flex; height: 6.5rem; justify-content: space-between; margin: 0 auto; max-width: 88rem; position: relative; z-index: 2; }
 .brand { align-items: center; color: #fffaf0; display: inline-flex; gap: .7rem; text-decoration: none; }
-.brand-mark { display: flex; gap: 2px; height: 1.8rem; transform: skew(-16deg); }
-.brand-mark span { background: var(--purple); border-radius: 3px; display: block; width: .42rem; }
-.brand-mark span:nth-child(1) { height: 1.1rem; margin-top: .7rem; }
-.brand-mark span:nth-child(2) { background: var(--brown); height: 1.55rem; margin-top: .25rem; }
-.brand-mark span:nth-child(3) { background: var(--yellow); height: 1.8rem; }
 .brand-name { font-size: 1.22rem; font-weight: 800; letter-spacing: -.04em; }
 .brand-name span { font-weight: 400; }
 .desktop-nav { display: flex; gap: clamp(1.4rem, 3vw, 3rem); left: 50%; position: absolute; transform: translateX(-50%); }
